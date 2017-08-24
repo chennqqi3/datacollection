@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xmlns:sof="http://schema.ly.com/schema/sof"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:webflow="http://www.springframework.org/schema/webflow-config"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/mvc
+    	http://www.springframework.org/schema/mvc/spring-mvc.xsd
+         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/webflow-config http://www.springframework.org/schema/webflow-config/spring-webflow-config.xsd
+         http://schema.ly.com/schema/sof http://schema.ly.com/schema/sof.xsd
+         http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
+	default-autowire="byName">
+
+	<!--<mvc:annotation-driven />-->
+	<context:annotation-config />
+	<context:component-scan  base-package="com.ly.report.tmc.datacollectionapi.*"/>
+
+	<bean id="springFactory" class="com.ly.report.tmc.datacollectionapi.biz.util.Springfactory" ></bean>
+
+	<!--启动消费者-->
+	<bean class="com.ly.report.tmc.datacollectionapi.biz.util.BeanPostProcess"/>
+
+	<bean id="dataCollectionUpdateServiceImpl" class="com.ly.report.tmc.datacollectionapi.biz.collection.impl.DataCollectionUpdateServiceImpl">
+		<property name="assign_topic">
+			<value>${mq.flightAssign.topic}</value>
+		</property>
+		<property name="primitive_topic">
+			<value>${mq.flightPrimitive.topic}</value>
+		</property>
+		<property name="change_topic">
+			<value>${mq.flightChange.topic}</value>
+		</property>
+		<property name="refund_topic">
+			<value>${mq.flightRefund.topic}</value>
+		</property>
+		<property name="message_group">
+			<value>${mq.flightStatistics.group}</value>
+		</property>
+	</bean>
+	<bean id="messageConsumerSeparateUpdate" class="com.ly.report.tmc.datacollectionapi.biz.consumer.MessageConsumerSeparateUpdate">
+		<property name="assign_topic">
+			<value>${mq.flightAssign.topic}</value>
+		</property>
+		<property name="primitive_topic">
+			<value>${mq.flightPrimitive.topic}</value>
+		</property>
+		<property name="change_topic">
+			<value>${mq.flightChange.topic}</value>
+		</property>
+		<property name="refund_topic">
+			<value>${mq.flightRefund.topic}</value>
+		</property>
+		<property name="message_group">
+			<value>${mq.flightStatistics.group}</value>
+		</property>
+		<property name="nameSrvAddress">
+			<value>${mq.nameSrvAddress}</value>
+		</property>
+	</bean>
+	<bean id="dataAnalyzeUpdate" class="com.ly.report.tmc.datacollectionapi.biz.analyze.DataAnalyzeUpdate">
+		<property name="assign_topic">
+			<value>${mq.flightAssign.topic}</value>
+		</property>
+		<property name="primitive_topic">
+			<value>${mq.flightPrimitive.topic}</value>
+		</property>
+		<property name="change_topic">
+			<value>${mq.flightChange.topic}</value>
+		</property>
+		<property name="refund_topic">
+			<value>${mq.flightRefund.topic}</value>
+		</property>
+		<property name="message_group">
+			<value>${mq.flightStatistics.group}</value>
+		</property>
+	</bean>
+	
+	<bean id="messageProduct" class="com.ly.report.tmc.datacollectionapi.biz.product.MessageProduct">
+		<property name="nameSrvAddress">
+			<value>${mq.nameSrvAddress}</value>
+		</property>
+	</bean>
+
+
+</beans>

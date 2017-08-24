@@ -1,0 +1,6 @@
+#\u63a7\u5236\u4e2d\u5fc3\u7684ip\u6216\u57df\u540d
+tcdsf.register.host=testdsf.tcent.cn
+#\u5ba2\u6237\u7aef\u7684\u6807\u8bc6\uff0c\u8fd9\u4e2a\u6807\u8bc6\u4f1a\u5728\u540e\u53f0\u770b\u5230
+tcdsf.consumer.name=datacollectionapi
+#\u5ba2\u6237\u7aefplevel
+tcdsf.consumer.plevel=5

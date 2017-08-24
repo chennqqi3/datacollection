@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:sof="http://schema.ly.com/schema/sof"
+	   xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:webflow="http://www.springframework.org/schema/webflow-config"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/webflow-config http://www.springframework.org/schema/webflow-config/spring-webflow-config.xsd
+         http://schema.ly.com/schema/sof http://schema.ly.com/schema/sof.xsd
+         http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
+	   default-autowire="byName">
+	<!-- 折扣分析 -->
+	<sof:reference id="discountanalysisfacade" serviceName="discountanalysisfacade" gsName="${reportanalysisapi.service.version}" interface="com.ly.flight.tmc.reportanalysisapi.facade.DiscountFacade" version="1.2.0.3" timeout="60000" retries="0">
+		<sof:method name="discountAnalysis" paramType="bodyParam" retries="0" timeout="60000" async="false">
+		</sof:method>
+	</sof:reference>
+	<!-- 差旅政策分析 -->
+	<sof:reference id="travelpolicyfacade" serviceName="travelpolicyfacade" gsName="${reportanalysisapi.service.version}" interface="com.ly.flight.tmc.reportanalysisapi.facade.TravelPolicyFacade" version="1.2.0.3" timeout="1000000" retries="0">
+		<sof:method name="travelPolicyAnalysis" paramType="bodyParam" retries="0" timeout="1000000" async="false">
+		</sof:method>
+	</sof:reference>
+	<!-- 起飞时间分析 -->
+	<sof:reference id="departuretimefacade" serviceName="departuretimefacade" gsName="${reportanalysisapi.service.version}" interface="com.ly.flight.tmc.reportanalysisapi.facade.DepartureTimeFacade" version="1.2.0.3" timeout="1000000" retries="0">
+		<sof:method name="departureTimeAnalysis" paramType="bodyParam" retries="0" timeout="1000000" async="false">
+		</sof:method>
+	</sof:reference>
+	<!-- 部门分析 -->
+	<sof:reference id="departmentfacade" serviceName="departmentfacade" gsName="${reportanalysisapi.service.version}" interface="com.ly.flight.tmc.reportanalysisapi.facade.DepartmentFacade" version="1.2.0.3" timeout="1000000" retries="0">
+		<sof:method name="computedepartment" paramType="bodyParam" retries="0" timeout="1000000" async="false">
+		</sof:method>
+	</sof:reference>
+	<!-- 航司、协议航空分析 -->
+	<sof:reference id="aircodeanalysisfacade" serviceName="aircodeanalysisfacade" gsName="${reportanalysisapi.service.version}" interface="com.ly.flight.tmc.reportanalysisapi.facade.AirCodeAnalysisFacade" version="1.2.0.3" timeout="1000000" retries="0">
+		<sof:method name="airCodeAnalysis" paramType="bodyParam" retries="0" timeout="1000000" async="false">
+		</sof:method>
+		<sof:method name="protocolAirCodeAnalysis" paramType="bodyParam" retries="0" timeout="1000000" async="false">
+		</sof:method>
+	</sof:reference>
+	<!-- 航线分析 -->
+	<sof:reference id="airroutefacade" serviceName="airroutefacade" gsName="${reportanalysisapi.service.version}" interface="com.ly.flight.tmc.reportanalysisapi.facade.AirRouteFacade" version="1.2.0.3" timeout="1000000" retries="0">
+		<sof:method name="airroutecompute" paramType="bodyParam" retries="0" timeout="1000000" async="false">
+		</sof:method>
+	</sof:reference>
+	<!-- 提前天数分析 -->
+	<sof:reference id="daysaheadfacade" serviceName="daysaheadfacade" gsName="${reportanalysisapi.service.version}" interface="com.ly.flight.tmc.reportanalysisapi.facade.DaysAheadFacade" version="1.2.0.3" timeout="1000000" retries="0">
+		<sof:method name="computedaysahead" paramType="bodyParam" retries="0" timeout="1000000" async="false">
+		</sof:method>
+	</sof:reference>
+	<!-- 仓等分析 -->
+	<sof:reference id="flightclassfacade" serviceName="flightclassfacade" gsName="${reportanalysisapi.service.version}" interface="com.ly.flight.tmc.reportanalysisapi.facade.FlightClassFacade" version="1.2.0.3" timeout="1000000" retries="0">
+		<sof:method name="flightclassanalysis" paramType="bodyParam" retries="0" timeout="1000000" async="false">
+		</sof:method>
+	</sof:reference>
+	<!-- 乘机人分析 -->
+	<sof:reference id="passengerfacade" serviceName="passengerfacade" gsName="${reportanalysisapi.service.version}" interface="com.ly.flight.tmc.reportanalysisapi.facade.PassengerFacade" version="1.2.0.3" timeout="1000000" retries="0">
+		<sof:method name="passengeranalysis" paramType="bodyParam" retries="0" timeout="1000000" async="false">
+		</sof:method>
+	</sof:reference>
+	<!-- 预订类型分析 -->
+	<sof:reference id="reportanalysisfacade" serviceName="reportanalysisfacade" gsName="${reportanalysisapi.service.version}" interface="com.ly.flight.tmc.reportanalysisapi.facade.ReportAnalysisFacade" version="1.2.0.3" timeout="1000000" retries="0">
+		<sof:method name="bookTypeAnalysis" paramType="bodyParam" retries="0" timeout="1000000" async="false">
+		</sof:method>
+	</sof:reference>
+
+</beans>

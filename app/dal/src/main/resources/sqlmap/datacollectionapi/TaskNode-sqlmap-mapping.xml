@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap>
+
+    
+    <resultMap id="RM.TaskNode" class="com.ly.report.tmc.datacollectionapi.dal.dataobject.TaskNodeDO">
+		<result property="id" column="ID" javaType="long" jdbcType="BIGINT"  nullValue="0"  />
+		<result property="taskid" column="TASKID" javaType="long" jdbcType="BIGINT"  nullValue="0"  />
+		<result property="nodeName" column="NODE_NAME" javaType="java.lang.String" jdbcType="VARCHAR"  />
+		<result property="nodeState" column="NODE_STATE" javaType="int" jdbcType="INTEGER"  nullValue="0"  />
+		<result property="nodeType" column="NODE_TYPE" javaType="int" jdbcType="INTEGER"  nullValue="0"  />
+		<result property="description" column="DESCRIPTION" javaType="java.lang.String" jdbcType="VARCHAR"  />
+		<result property="createtime" column="CREATETIME" javaType="java.util.Date" jdbcType="TIMESTAMP"  />
+		<result property="count" column="COUNT" javaType="int" jdbcType="INTEGER"  nullValue="0"  />
+    </resultMap>
+    
+
+	
+	<select id="datacollectionapi.TaskNode.selectById" resultMap="RM.TaskNode" >
+    	select  /*datacollectionapi.TaskNode.selectById*/ ID,TASKID,NODE_NAME,NODE_STATE,NODE_TYPE,DESCRIPTION,CREATETIME,COUNT  FROM TASK_NODE WHERE ID = #id#
+	</select>	
+
+	    
+	
+	
+    
+
+</sqlMap>
+

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table sqlname="TASK_NODE">
+
+
+    <operation name="selectById" paramtype="parameterObject">
+        <sql>
+            select *  FROM TASK_NODE WHERE ID = #id#
+        </sql>
+    </operation>
+
+    <operation name="insert" paramtype="object">
+        <sql>
+            INSERT INTO
+            TASK_NODE(
+            TASKID ,
+            NODE_NAM,
+            NODE_STATE,
+            NODE_TYPE,
+            DESCRIPTION,
+            CREATETIME,
+            .
+
+            )
+            VALUES(
+            #taskId#,
+            #nodeName#,
+            #nodeState#,
+            #nodeType#,
+            #description#,`
+            #createTime#,
+            #count#
+            )
+        </sql>
+    </operation>
+
+</table>

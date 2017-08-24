@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap>
+
+    
+    <resultMap id="RM.Task" class="com.ly.report.tmc.datacollectionapi.dal.dataobject.TaskDO">
+		<result property="id" column="ID" javaType="int" jdbcType="INTEGER"  nullValue="0"  />
+		<result property="parentid" column="PARENTID" javaType="int" jdbcType="INTEGER"  nullValue="0"  />
+		<result property="name" column="NAME" javaType="java.lang.String" jdbcType="VARCHAR"  />
+		<result property="description" column="DESCRIPTION" javaType="java.lang.String" jdbcType="VARCHAR"  />
+		<result property="corn" column="CORN" javaType="java.lang.String" jdbcType="VARCHAR"  />
+		<result property="state" column="STATE" javaType="int" jdbcType="INTEGER"  nullValue="0"  />
+		<result property="createtime" column="CREATETIME" javaType="java.util.Date" jdbcType="TIMESTAMP"  />
+    </resultMap>
+    
+
+	
+	<select id="datacollectionapi.Task.selectById" resultMap="RM.Task" >
+    	select  /*datacollectionapi.Task.selectById*/ ID,PARENTID,NAME,DESCRIPTION,CORN,STATE,CREATETIME  FROM TASK
+            WHERE ID = #id#
+	</select>	
+
+	    
+	
+	
+    
+
+</sqlMap>
+

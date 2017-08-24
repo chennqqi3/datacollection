@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="STDOUT-APPENDER" class="org.apache.log4j.ConsoleAppender">
+		<param name="encoding" value="UTF-8" />
+		<param name="target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p  %c{2} - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="STDERR-APPENDER" class="org.apache.log4j.ConsoleAppender">
+		<param name="encoding" value="UTF-8" />
+		<param name="target" value="System.err" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p  %c{2} - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="SKYNET-APPENDER" class="com.ly.tcbase.skynet.clientagent.log.appender.ThriftLog4jAppender">
+		<param name="encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+	</appender>
+
+	<appender name="ERROR-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${log.root}/logs/common-error.log" />
+		<param name="append" value="true" />
+		<param name="encoding" value="UTF-8" />
+		<param name="threshold" value="error" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{loginUserEmail}/%X{loginUserID}/%X{remoteAddr}/%X{clientId} - %X{requestURIWithQueryString}] %-5p  %c{2} - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="DEFAULT-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${log.root}/logs/common-default.log" />
+		<param name="append" value="true" />
+		<param name="encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{loginUserEmail}/%X{loginUserID}/%X{remoteAddr}/%X{clientId} - %X{requestURIWithQueryString}] %-5p  %c{2} - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="APP-DEFAULT-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${log.root}/logs/datacollectionapi.log" />
+		<param name="append" value="true" />
+		<param name="encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{loginUserEmail}/%X{loginUserID}/%X{remoteAddr}/%X{clientId} - %X{requestURIWithQueryString}] %-5p  %c{2} - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="SOF-DEFAULT-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${log.root}/logs/sof-default.log" />
+		<param name="append" value="true" />
+		<param name="encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{loginUserEmail}/%X{loginUserID}/%X{remoteAddr}/%X{clientId} - %X{requestURIWithQueryString}] %-5p  %c{2} - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="DUBBO-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${log.root}/logs/dubbo.log" />
+		<param name="append" value="true" />
+		<param name="encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{loginUserEmail}/%X{loginUserID}/%X{remoteAddr}/%X{clientId} - %X{requestURIWithQueryString}] %-5p  %c{2} - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="JVM-MONITOR-DIGEST-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${log.root}/logs/jvm-monitor-digest.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH\:mm\:ss}] %-5p [] [%c{3}]\: %m%n" />
+		</layout>
+	</appender>
+
+
+	<logger name="STDOUT" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="STDOUT-APPENDER" />
+	</logger>
+
+	<logger name="STDERR" additivity="false">
+		<level value="ERROR" />
+		<appender-ref ref="STDERR-APPENDER" />
+	</logger>
+
+	<logger name="com.ly.sof" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="SOF-DEFAULT-APPENDER" />
+		<appender-ref ref="ERROR-APPENDER" />
+		<appender-ref ref="SKYNET-APPENDER" />
+	</logger>
+
+	<logger name="org.springframework" additivity="true">
+		<level value="WARN" />
+		<appender-ref ref="SOF-DEFAULT-APPENDER" />
+		<appender-ref ref="ERROR-APPENDER" />
+		<appender-ref ref="SKYNET-APPENDER" />
+	</logger>
+
+	<logger name="com.alibaba.dubbo" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="DUBBO-APPENDER" />
+		<appender-ref ref="ERROR-APPENDER" />
+		<appender-ref ref="SKYNET-APPENDER" />
+	</logger>
+
+	<logger name="com.alibaba.dubbo.rpc.protocol.rest.support" additivity="false">
+		<level value="WARN" />
+		<appender-ref ref="DUBBO-APPENDER" />
+		<appender-ref ref="ERROR-APPENDER" />
+		<appender-ref ref="SKYNET-APPENDER" />
+	</logger>
+
+	<logger name="java.sql" additivity="false">
+		<level value="ERROR" />
+		<appender-ref ref="ERROR-APPENDER" />
+		<appender-ref ref="SKYNET-APPENDER" />
+	</logger>
+
+	<logger name="com.ibatis" additivity="true">
+		<level value="WARN" />
+		<appender-ref ref="SOF-DEFAULT-APPENDER" />
+		<appender-ref ref="ERROR-APPENDER" />
+		<appender-ref ref="SKYNET-APPENDER" />
+	</logger>
+	
+	<logger name="JVM-MONITOR-DIGEST-LOGGER" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="JVM-MONITOR-DIGEST-APPENDER" />
+	</logger>
+
+	<logger name="com.ly.report.tmc.datacollectionapi" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="APP-DEFAULT-APPENDER" />
+		<appender-ref ref="ERROR-APPENDER" />
+		<appender-ref ref="SKYNET-APPENDER" />
+	</logger>
+
+	<root>
+		<level value="INFO" />
+		<appender-ref ref="DEFAULT-APPENDER" />
+		<appender-ref ref="ERROR-APPENDER" />
+		<appender-ref ref="SKYNET-APPENDER" />
+	</root>
+</log4j:configuration>
+

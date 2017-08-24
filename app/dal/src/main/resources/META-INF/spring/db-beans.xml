@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:osgi="http://www.springframework.org/schema/osgi"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="
+
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/osgi "
+	   default-autowire="byName">
+
+	<context:annotation-config/>
+
+	<context:component-scan base-package="com.ly.report.tmc.datacollectionapi.*"/>
+	<!--<mvc:annotation-driven />-->
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+
+
+	<!-- Hive数据源配置 -->
+	<bean id="dataSource_hive" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close" lazy-init="default"
+		  autowire="default">
+		<property name="driverClassName" value="${dap.hive.jdbc.driver}"/>
+		<!--<property name="driverClassName" value="org.apache.hive.jdbc.HiveDriver"/>-->
+		<property name="url" value="${dap.hive.jdbc.url}"/>
+		<!--<property name="url" value="jdbc:hive2://ZK-186-002:2182,ZK-186-003:2182,ZK-186-004:2182,ZK-186-005:2182,ZK-186-006:2182,ZK-186-007:2182,ZK-186-008:2182/;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=hiveserver2"/>-->
+		<!--<property name="url" value="jdbc:hive2://10.100.156.92:10000/tctmcorder"/>-->
+		<property name="username" value="${dap.hive.jdbc.user}"/>
+		<!--<property name="username" value="flightdap"/>-->
+		<property name="password" value="${dap.hive.jdbc.password}"/>
+		<!--<property name="password" value="Ss3yRt#C"/>-->
+		<property name="validationQuery" value="${dap.hive.jdbc.validationQuery}"/>
+		<property name="validationInterval" value="${dap.hive.jdbc.validationInterval}"/>
+		<property name="timeBetweenEvictionRunsMillis" value="${dap.hive.jdbc.timeBetweenEvictionRunsMillis}"/>
+		<property name="maxActive" value="${dap.hive.jdbc.maxActive}"/>
+		<property name="minIdle" value="${dap.hive.jdbc.minIdle}"/>
+		<property name="maxWait" value="${dap.hive.jdbc.maxWait}"/>
+		<property name="initialSize" value="${dap.hive.jdbc.initialSize}"/>
+		<property name="removeAbandonedTimeout" value="${dap.hive.jdbc.removeAbandonedTimeout}"/>
+		<property name="removeAbandoned" value="${dap.hive.jdbc.removeAbandoned}"/>
+		<property name="minEvictableIdleTimeMillis" value="${dap.hive.jdbc.minEvictableIdleTimeMillis}"/>
+		<property name="testWhileIdle" value="${dap.hive.jdbc.testWhileIdle}"/>
+		<property name="testOnBorrow" value="${dap.hive.jdbc.testOnBorrow}"/>
+		<property name="testOnReturn" value="${dap.hive.jdbc.testOnReturn}"/>
+	</bean>
+
+
+
+	<!-- 填写数据库配置，解开以下注释
+	<bean id="dsconfig" class="com.ly.dal.config.DataSourceConfig">
+		<property name="uniformUrl">
+			<value>${uniformUrl}</value>
+		</property>
+		<property name="uniformProjectName">
+			<value>${uniformProjectName}</value>
+		</property>
+		<property name="maxConnections">
+			<value>${maxConnections}</value>
+		</property>
+		<property name="dbName">
+			<value>${dbName}</value>
+		</property>
+		<property name="initialSize">
+			<value>${initialSize}</value>
+		</property>
+		<property name="maxWait">
+			<value>${maxWait}</value>
+		</property>
+		<property name="maxIdle">
+			<value>${maxIdle}</value>
+		</property>
+		<property name="minIdle">
+			<value>${minIdle}</value>
+		</property>
+		<property name="testOnBorrow">
+			<value>${testOnBorrow}</value>
+		</property>
+		<property name="validationQuery">
+			<value>${validationQuery}</value>
+		</property>
+		<property name="validationQueryTimeout">
+			<value>${validationQueryTimeout}</value>
+		</property>
+	</bean>
+
+	<bean id="datasource" class="com.ly.dal.datasource.RouteableDataSource"
+		destroy-method="close">
+		<constructor-arg>
+			<ref bean="dsconfig" />
+		</constructor-arg>
+	</bean>
+
+	<bean id="datasourceProxy" class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy">
+		<property name="targetDataSource" ref="datasource" />
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource">
+			<ref bean="datasourceProxy" />
+		</property>
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+
+
+	<bean id="datacollectionapiSqlMapClientDAO" abstract="true">
+		<property name="dataSource">
+			<ref bean="datasourceProxy" />
+		</property>
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+
+	<bean id="lobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler" />
+
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="dataSource" ref="datasourceProxy" />
+		<property name="configLocations">
+			<list>
+				<value>classpath:sqlmap/datacollectionapi/datacollectionapi-sqlmap-config.xml</value>
+			</list>
+		</property>
+		<property name="lobHandler" ref="lobHandler" />
+	</bean>
+ -->
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource_hive"></property>
+	</bean>
+
+	<bean id="templateTransactionManager"
+		  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource">
+			<ref bean="dataSource_hive"/>
+		</property>
+	</bean>
+
+
+
+
+	<bean id="Datasource" class="com.ly.dal.datasource.RoutableDataSource"  init-method="init" destroy-method="close">
+		<!--<constructor-arg>
+            <ref bean="dapDSConfig"/>
+        </constructor-arg>-->
+		 <property name="env" value="${db.env}"/>
+		 <!--<property name="env" value="qa"/>-->
+
+		<!-- 天眼标识 -->
+		<property name="projectId" value="flight.datacollectionapi"/>
+		<!-- 数据库名称 -->
+		<property name="dbName" value="TCTMCFlightStatistics"/>
+	</bean>
+
+
+	<bean id="datasourceProxy" class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy">
+	<property name="targetDataSource" ref="Datasource" />
+	</bean>
+
+
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<property name="dataSource">
+	<ref bean="datasourceProxy" />
+	</property>
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+	<property name="transactionManager">
+	<ref bean="transactionManager" />
+	</property>
+	</bean>
+
+	<bean id="datacollectionapiSqlMapClientDAO" abstract="true">
+	<property name="dataSource">
+	<ref bean="datasourceProxy" />
+	</property>
+	<property name="sqlMapClient">
+	<ref bean="sqlMapClient" />
+	</property>
+	</bean>
+
+	<bean id="lobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler"/>
+
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+	<!--<property name="dataSource" ref="datasourceProxy" />-->
+	<property name="configLocations">
+	<list>
+		<value>classpath:sqlmap/datacollectionapi/datacollectionapi-sqlmap-config.xml</value>
+	</list>
+	</property>
+	<property name="lobHandler" ref="lobHandler" />
+	</bean>
+</beans>

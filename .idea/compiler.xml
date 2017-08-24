@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="datacollectionapi-biz" />
+        <module name="datacollectionapi-dal" />
+        <module name="datacollectionapi-facade" />
+        <module name="datacollectionapi-facade-impl" />
+        <module name="datacollectionapi-integration" />
+        <module name="datacollectionapi-test" />
+        <module name="datacollectionapi-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="datacollection" target="1.8" />
+      <module name="datacollectionapi-assembly" target="1.8" />
+      <module name="datacollectionapi-biz" target="1.8" />
+      <module name="datacollectionapi-dal" target="1.8" />
+      <module name="datacollectionapi-facade" target="1.8" />
+      <module name="datacollectionapi-facade-impl" target="1.8" />
+      <module name="datacollectionapi-integration" target="1.8" />
+      <module name="datacollectionapi-test" target="1.8" />
+      <module name="datacollectionapi-web" target="1.8" />
+      <module name="datacollectionapi-webdocs" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

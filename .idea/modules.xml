@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/datacollection.iml" filepath="$PROJECT_DIR$/.idea/datacollection.iml" />
+      <module fileurl="file://$PROJECT_DIR$/assembly/datacollectionapi-assembly.iml" filepath="$PROJECT_DIR$/assembly/datacollectionapi-assembly.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/biz/datacollectionapi-biz.iml" filepath="$PROJECT_DIR$/app/biz/datacollectionapi-biz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/dal/datacollectionapi-dal.iml" filepath="$PROJECT_DIR$/app/dal/datacollectionapi-dal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/facade/datacollectionapi-facade.iml" filepath="$PROJECT_DIR$/app/facade/datacollectionapi-facade.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/facade-impl/datacollectionapi-facade-impl.iml" filepath="$PROJECT_DIR$/app/facade-impl/datacollectionapi-facade-impl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/integration/datacollectionapi-integration.iml" filepath="$PROJECT_DIR$/app/integration/datacollectionapi-integration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/test/datacollectionapi-test.iml" filepath="$PROJECT_DIR$/app/test/datacollectionapi-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/web/datacollectionapi-web.iml" filepath="$PROJECT_DIR$/app/web/datacollectionapi-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webdocs/datacollectionapi-webdocs.iml" filepath="$PROJECT_DIR$/webdocs/datacollectionapi-webdocs.iml" />
+    </modules>
+  </component>
+</project>

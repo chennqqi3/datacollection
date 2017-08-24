@@ -1,0 +1,4 @@
+#具体的天眼标示
+tcbase.appName=flight.datacollectionapi
+#具体的运行环境,test-线下测试环境,stage-线上预发环境,product-正式环境,可以设置成变量,由maven在构建时自动设置,具体请参考maven使用
+tcbase.environment=product

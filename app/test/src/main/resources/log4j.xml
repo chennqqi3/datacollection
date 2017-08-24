@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="STDOUT-APPENDER" class="org.apache.log4j.ConsoleAppender">
+		<param name="encoding" value="UTF-8" />
+		<param name="target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p  %c{2} - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="STDERR-APPENDER" class="org.apache.log4j.ConsoleAppender">
+		<param name="encoding" value="UTF-8" />
+		<param name="target" value="System.err" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p  %c{2} - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="ERROR-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="logs/common-error.log" />
+		<param name="append" value="true" />
+		<param name="encoding" value="UTF-8" />
+		<param name="threshold" value="error" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%X{loginUserEmail}/%X{loginUserID}/%X{remoteAddr}/%X{clientId} - %X{requestURIWithQueryString}] %-5p  %c{2} - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="DEFAULT-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="logs/common-default.log" />
+		<param name="append" value="true" />
+		<param name="encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%X{loginUserEmail}/%X{loginUserID}/%X{remoteAddr}/%X{clientId} - %X{requestURIWithQueryString}] %-5p  %c{2} - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="APP-DEFAULT-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="logs/sofsample.log" />
+		<param name="append" value="true" />
+		<param name="encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%X{loginUserEmail}/%X{loginUserID}/%X{remoteAddr}/%X{clientId} - %X{requestURIWithQueryString}] %-5p  %c{2} - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="SOF-DEFAULT-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="logs/sof-default.log" />
+		<param name="append" value="true" />
+		<param name="encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%X{loginUserEmail}/%X{loginUserID}/%X{remoteAddr}/%X{clientId} - %X{requestURIWithQueryString}] %-5p  %c{2} - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="DUBBO-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="logs/dubbo.log" />
+		<param name="append" value="true" />
+		<param name="encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%X{loginUserEmail}/%X{loginUserID}/%X{remoteAddr}/%X{clientId} - %X{requestURIWithQueryString}] %-5p  %c{2} - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="JVM-MONITOR-DIGEST-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="logs/jvm-monitor-digest.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH\:mm\:ss}] %-5p [] [%c{3}]\: %m%n" />
+		</layout>
+	</appender>
+
+	<!-- 
+	<logger name="com.ly.sof" additivity="true">    
+    	<level value="INFO"/>
+        <appender-ref ref="APP-DEFAULT-APPENDER" />      
+    </logger>
+    <logger name="com.alibaba.dubbo" additivity="true">    
+    	<level value="INFO"/>
+        <appender-ref ref="APP-DEFAULT-APPENDER" />      
+    </logger>
+    <logger name="com.alibaba.dubbo.rpc.protocol.rest.support" additivity="true">
+	    <level value="INFO"/>
+	    <appender-ref ref="APP-DEFAULT-APPENDER"/>
+	</logger>
+    <logger name="org.springframework" additivity="true">    
+    	<level value="INFO"/>
+        <appender-ref ref="APP-DEFAULT-APPENDER" />      
+    </logger>
+    <logger name="java.sql" additivity="true">    
+    	<level value="ERROR"/>
+        <appender-ref ref="APP-DEFAULT-APPENDER" />      
+    </logger>
+    <logger name="com.ibatis" additivity="true">    
+    	<level value="WARN"/>
+        <appender-ref ref="APP-DEFAULT-APPENDER" />      
+    </logger>
+    <logger name="JVM-MONITOR-DIGEST-LOGGER" additivity="true">    
+    	<level value="INFO"/>
+        <appender-ref ref="JVM-MONITOR-DIGEST-APPENDER" />      
+    </logger>
+    <root>
+		<level value="INFO" />
+		<appender-ref ref="DEFAULT-APPENDER" />
+		<appender-ref ref="ERROR-APPENDER" />
+	</root>
+     -->
+     
+    <root>
+		<level value="INFO" />
+		<appender-ref ref="STDOUT-APPENDER" />
+	</root>
+</log4j:configuration>
+
